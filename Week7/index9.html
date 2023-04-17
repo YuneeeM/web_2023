@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>new Object()로 사용자 객체 만들기</title>
+  <script>
+    //조회
+    function inqury() {
+      return this.balance;
+    }
+    //입금
+    function deposit(money) {
+      this.balance += money;
+    } 
+    //출금
+    function withdraw(money) {
+      this.balance -=money;
+    }
+  </script>
+</head>
+<body>
+  <h3>new Object()로 사용자 객체 만들기</h3><hr>
+  <script>
+    //계좌 객체 만들기
+    var account = new Object();
+    account.owner = '홍길동';
+    account.code = '111';
+    account.balance = 35000;
+    account.inqury = inqury;
+    account.deposit = deposit;
+    account.withdraw = withdraw;
+
+    document.write('account : ');
+    document.write(account.owner + ', ');
+    document.write(account.code + ', ');
+    document.write(account.balance+'원<br>');
+
+    account.deposit(10000); //10000원 저금
+    document.write('10000원 저금 후 잔액은 ' + account.inqury() + '원<br>');
+    account.withdraw(5000); //5000원 인출
+    document.write('5000원 인출 후 잔액은 '+account.inqury() + '원<br>');
+  </script>
+</body>
+</html>
