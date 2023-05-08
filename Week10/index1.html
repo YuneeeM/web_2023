@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공공데이터 API 사용 예제</title>
+  </head>
+  <body>
+    <p id="sample_data"></p>
+    <script>
+      const url =
+        "https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=10&serviceKey=[appkey]"; //perpage: 가져올 데이터의 수
+
+      dataPane = document.getElementById("sample_data");
+
+      fetch(url) //client에서 fetch를 통해 데이터가 저장된 url로 이동
+        .then((res) => res.json()) //response 객체로 반환
+        .then((resJson) => {
+          dataPane.innerText = JSON.stringify(resJson, null, 1); //문자열로 변환을 하겠다!
+        });
+    </script>
+  </body>
+</html>
